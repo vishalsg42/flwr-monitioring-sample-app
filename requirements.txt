@@ -2,3 +2,4 @@ flwr==1.10.0
 flwr_monitoring==0.1.0
 torchvision==0.19.0
 torch==2.4.0
+flwr_datasets==0.3.0

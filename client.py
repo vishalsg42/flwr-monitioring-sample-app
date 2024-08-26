@@ -127,7 +127,7 @@ def main() -> None:
     #     client=client_fn
     # )
     fl.client.start_client(
-        server_address=f"{args.server_ip}:{args.server_port}",
+        server_address=f"{server_ip}:{server_port}",
         client=client_fn(client_id=client_id, local_epochs=local_epochs, learning_rate=learning_rate).to_client()
     )
 

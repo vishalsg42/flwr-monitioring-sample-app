@@ -67,7 +67,7 @@ def main() -> None:
     parser.add_argument(
         "--client-id",
         type=int,
-        default=0,
+        default=os.getenv('CLIENT_ID', '0'),
         choices=range(0, 10),
         required=False,
         help="Specifies the artificial data partition of CIFAR10 to be used. \
@@ -76,7 +76,7 @@ def main() -> None:
     parser.add_argument(
         "--local-epochs",
         type=int,
-        default=0,
+        default=os.getenv('LOCAL_EPOCHS', '0'),
         choices=range(0, 10),
         required=False,
         help="Specifies the number of local epochs to be used.",
@@ -84,7 +84,7 @@ def main() -> None:
     parser.add_argument(
         "--learning-rate",
         type=int,
-        default=0,
+        default=os.getenv('LEARNING_RATE', '0'),
         choices=range(0, 10),
         required=False,
         help="Specifies the learning rate to be used.",
@@ -92,7 +92,7 @@ def main() -> None:
     parser.add_argument(
         "--use-cuda",
         type=bool,
-        default=False,
+        default=os.getenv('USE_CUDA', 'False'),
         required=False,
         help="Set to true to use GPU. Default: False",
     )

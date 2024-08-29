@@ -126,6 +126,8 @@ def main() -> None:
     #     server_address=f"{server_ip}:{server_port}",
     #     client=client_fn
     # )
+
+    print(f"Starting Flower client at {server_ip}:{server_port}")
     fl.client.start_client(
         server_address=f"{server_ip}:{server_port}",
         client=client_fn(client_id=client_id, local_epochs=local_epochs, learning_rate=learning_rate).to_client()

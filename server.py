@@ -14,6 +14,15 @@ from flwr_monitoring import GenericMonitoringStrategy, default_metrics, create_m
 from utils import Net, get_weights
 import flwr as fl
 from flwr.server import ServerConfig
+import logging
+
+
+# Configure logging
+logging.basicConfig(
+    filename='logs/server.log',  # Ensure this path matches the mounted volume
+    level=logging.INFO,
+    format='%(asctime)s %(levelname)s %(message)s',
+)
 
 # Define metric aggregation function
 def weighted_average(metrics: List[Tuple[int, Metrics]]) -> Metrics:
@@ -57,8 +66,8 @@ def main():
     prometheus_port = args.prometheus_port
     num_rounds = args.num_of_rounds
     
-    print(f"Server IP: {server_ip}")
-    print(f"Server Port: {server_port}")
+    logging.info(f"Server IP: {server_ip}")
+    logging.info(f"Server Port: {server_port}")
 
     # Define strategy
     base_strategy = fl.server.strategy.FedAvg(
@@ -85,7 +94,7 @@ def main():
 
     server_address = f"{server_ip}:{server_port}"
 
-    print(f"Starting Flower server at {server_ip}:{server_port}")
+    logging.info(f"Starting Flower server at {server_ip}:{server_port}")
     fl.server.start_server(
         server_address=server_address,
         config=config,
